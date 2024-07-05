@@ -1,0 +1,25 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style-type: none;
+  text-decoration: none;
+  font-family: "Montserrat", sans-serif;
+}
+
+body {
+  height: 100vh;
+  // overflow: hidden;
+  // overflow-y: scroll;
+  overflow: hidden;
+}
+.active {
+  border: 1px solid rgba(12, 69, 107, 0.244);
+  border-radius: 10px;
+  background-color: rgb(183, 222, 223);
+}
+button,
+input {
+  outline: none;
+  border: none;
+}

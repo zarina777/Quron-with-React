@@ -1,0 +1,12 @@
+.Sidebar {
+  height: 88vh;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  ul {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+}

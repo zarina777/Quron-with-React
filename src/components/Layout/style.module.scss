@@ -1,0 +1,22 @@
+.flex {
+  display: flex;
+  height: 88vh;
+  .route_wrap {
+    height: 100%;
+    border-top: 1px solid;
+    border-left: 1px solid;
+    border-color: inherit;
+    width: 100%;
+    border-top-left-radius: 20px;
+    padding: 20px 20px 0 20px;
+    background-color: rgba(84, 212, 255, 0.201);
+  }
+}
+.day {
+  background-color: rgba(255, 255, 255);
+  color: #000000;
+}
+.night {
+  background-color: rgb(4, 43, 88);
+  color: rgb(255, 255, 255);
+}

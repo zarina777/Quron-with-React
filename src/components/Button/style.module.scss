@@ -1,0 +1,16 @@
+.Button {
+  width: 45px;
+  height: 45px;
+  // border: 1px solid rgba(12, 69, 107, 0.244);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  background-color: rgba(226, 240, 255, 0.735);
+  font-size: 17px;
+  color: rgb(12, 67, 104);
+  cursor: pointer;
+  &:hover {
+    background-color: rgba(201, 215, 230, 0.806);
+  }
+}

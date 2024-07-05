@@ -1,0 +1,69 @@
+.surahs {
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+  gap: 10px;
+  height: 77vh;
+
+  li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 10px;
+    border-radius: 9px;
+    transition: all 0.3s;
+    .english {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      span {
+        font-size: 14px;
+        font-weight: 600;
+        width: 42px;
+        aspect-ratio: 1/1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: rgb(208, 238, 255);
+        border-radius: 50%;
+        color: #0091ad;
+      }
+      .name {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+        h3 {
+          font-size: 14px;
+        }
+        p {
+          font-size: 10px;
+          display: flex;
+          justify-content: right;
+        }
+      }
+    }
+    .arabic {
+      font-size: 12px;
+      font-weight: 600;
+      color: #969696;
+      text-align: end;
+    }
+    &:hover {
+      cursor: pointer;
+      background-color: rgba(8, 94, 151, 0.1);
+      span {
+        background-color: rgba(31, 57, 91, 0.9);
+        color: #fff;
+      }
+    }
+  }
+}
+.onSurah {
+  background-color: rgba(8, 94, 151, 0.1);
+  span {
+    background-color: rgba(31, 57, 91, 0.9) !important;
+    color: #fff !important;
+  }
+}
