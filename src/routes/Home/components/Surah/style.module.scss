@@ -1,7 +1,8 @@
 .container {
   position: relative;
+  flex: 1;
   .surah {
-    height: 88vh;
+    height: calc(88vh - 20px);
     overflow-y: scroll;
     width: 100%;
     display: flex;

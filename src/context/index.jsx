@@ -20,7 +20,6 @@ function ProvideContext({ children }) {
       ? JSON.parse(localStorage.getItem("savedAyahs"))
       : []
   );
-  console.log(saved);
   const audioRef = useRef();
   return (
     <Context.Provider

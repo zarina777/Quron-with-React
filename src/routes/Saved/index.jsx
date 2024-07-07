@@ -45,7 +45,6 @@ const Saved = () => {
                         }
                       });
                     });
-                    console.log(saved);
                     localStorage.setItem("savedAyahs", JSON.stringify(saved));
                   }}
                 >
