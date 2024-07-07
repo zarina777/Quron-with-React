@@ -3,8 +3,10 @@ import { useState } from "react";
 import { useContext } from "react";
 import { useEffect } from "react";
 import api from "../../../../api";
+import { v4 as uuidv4 } from "uuid";
 import { Context } from "../../../../context";
 import cn from "./style.module.scss";
+import { memo } from "react";
 
 const Surah = () => {
   const { theSurah, setAudio, audioRef, setClose, saved, setSaved } =
@@ -44,102 +46,106 @@ const Surah = () => {
     }
   }, [theSurah]);
   return (
-    <div className={cn.surah}>
-      {loader && (
-        <div className={cn.loader_wrap}>
-          <div className={cn.loader}></div>
-        </div>
-      )}
-      {info && translation && (
-        <>
-          <div className={clsx(cn.heading, cn.Surah)}>
-            <h3>{info.englishName}</h3>
-            <span>
-              Ayah - {info.ayahs.length} , {info.revelationType}
-            </span>
+    <div className={cn.container}>
+      <div className={cn.surah}>
+        {loader && (
+          <div className={cn.loader_wrap}>
+            <div className={cn.loader}></div>
           </div>
-          {info.ayahs.map((el, index) => {
-            return (
-              <div className={clsx(cn.ayahs, cn.Surah)} key={el.number}>
-                <div className={cn.controls}>
-                  <span className={cn.ayah_num}>
-                    {theSurah + ":" + (index + 1)}
-                  </span>
-                  <button
-                    onClick={() => {
-                      setClose(false);
-                      setAudio({
-                        audio: audioAyah[index].audio,
-                        name: info.englishName,
-                        arabicName: translation.name,
-                        number: `${theSurah + ":" + (index + 1)}`,
-                      });
-                      audioRef.current.play();
-                    }}
-                  >
-                    <i className="fa-solid fa-play"></i>
-                  </button>
-                  <button
-                    onClick={() => {
-                      if (
-                        !saved.filter((el) => {
-                          return el.number == `${theSurah + ":" + (index + 1)}`;
-                        }).length
-                      ) {
-                        setSaved((prev) => [
-                          ...prev,
-                          {
-                            text: el.text,
-                            translation: translation.ayahs[index]?.text,
-                            audio: audioAyah[index].audio,
-                            name: info.englishName,
-                            arabicName: translation.name,
-                            number: `${theSurah + ":" + (index + 1)}`,
-                          },
-                        ]);
-                        localStorage.setItem(
-                          "savedAyahs",
-                          JSON.stringify(saved)
-                        );
-                      } else {
-                        setSaved((prev) => {
-                          return prev.filter((el) => {
-                            if (
-                              el.number !== `${theSurah + ":" + (index + 1)}`
-                            ) {
-                              return el;
-                            }
-                          });
+        )}
+        {info && translation && (
+          <>
+            <div className={clsx(cn.heading, cn.Surah)}>
+              <h3>{info.englishName}</h3>
+              <span>
+                Ayah - {info.ayahs.length} , {info.revelationType}
+              </span>
+            </div>
+            {info.ayahs.map((el, index) => {
+              return (
+                <div className={clsx(cn.ayahs, cn.Surah)} key={uuidv4()}>
+                  <div className={cn.controls}>
+                    <span className={cn.ayah_num}>
+                      {theSurah + ":" + (index + 1)}
+                    </span>
+                    <button
+                      onClick={() => {
+                        setClose(false);
+                        setAudio({
+                          audio: audioAyah[index].audio,
+                          name: info.englishName,
+                          arabicName: translation.name,
+                          number: `${theSurah + ":" + (index + 1)}`,
                         });
-                        localStorage.setItem(
-                          "savedAyahs",
-                          JSON.stringify(saved)
-                        );
-                      }
-                    }}
-                  >
-                    {saved.filter((el) => {
-                      return el.number == `${theSurah + ":" + (index + 1)}`;
-                    }).length ? (
-                      <i className="fa-solid fa-bookmark"></i>
-                    ) : (
-                      <i className="fa-regular fa-bookmark"></i>
-                    )}
-                  </button>
-                </div>
-                <div className={cn.text_wrapper}>
-                  <div className={cn.text_arabic}> {el.text}</div>
-                  <div className={cn.text_tranlation}>
-                    {translation.ayahs[index]?.text}
+                        audioRef.current.play();
+                      }}
+                    >
+                      <i className="fa-solid fa-play"></i>
+                    </button>
+                    <button
+                      onClick={() => {
+                        if (
+                          !saved.filter((el) => {
+                            return (
+                              el.number == `${theSurah + ":" + (index + 1)}`
+                            );
+                          }).length
+                        ) {
+                          setSaved((prev) => [
+                            {
+                              text: el.text,
+                              translation: translation.ayahs[index]?.text,
+                              audio: audioAyah[index].audio,
+                              name: info.englishName,
+                              arabicName: translation.name,
+                              number: `${theSurah + ":" + (index + 1)}`,
+                            },
+                            ...prev,
+                          ]);
+                          localStorage.setItem(
+                            "savedAyahs",
+                            JSON.stringify(saved)
+                          );
+                        } else {
+                          setSaved((prev) => {
+                            return prev.filter((el) => {
+                              if (
+                                el.number !== `${theSurah + ":" + (index + 1)}`
+                              ) {
+                                return el;
+                              }
+                            });
+                          });
+                          localStorage.setItem(
+                            "savedAyahs",
+                            JSON.stringify(saved)
+                          );
+                        }
+                      }}
+                    >
+                      {saved.filter((el) => {
+                        return el.number == `${theSurah + ":" + (index + 1)}`;
+                      }).length ? (
+                        <i className="fa-solid fa-bookmark"></i>
+                      ) : (
+                        <i className="fa-regular fa-bookmark"></i>
+                      )}
+                    </button>
+                  </div>
+                  <div className={cn.text_wrapper}>
+                    <div className={cn.text_arabic}> {el.text}</div>
+                    <div className={cn.text_tranlation}>
+                      {translation.ayahs[index]?.text}
+                    </div>
                   </div>
                 </div>
-              </div>
-            );
-          })}
-        </>
-      )}
+              );
+            })}
+          </>
+        )}
+      </div>
     </div>
   );
 };
 
-export default Surah;
+export default memo(Surah);

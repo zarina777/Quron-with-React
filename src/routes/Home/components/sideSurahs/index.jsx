@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { useContext } from "react";
 import { Context } from "../../../../context";
 import cn from "./style.module.scss";
@@ -31,4 +32,4 @@ const SideSurahs = ({ data }) => {
   );
 };
 
-export default SideSurahs;
+export default memo(SideSurahs);

@@ -1,6 +1,7 @@
 import clsx from "clsx";
 import { useContext } from "react";
 import { Context } from "../../context";
+import { v4 as uuidv4 } from "uuid";
 import cn from "./style.module.scss";
 
 // {
@@ -19,7 +20,7 @@ const Saved = () => {
       <div className={cn.savedAyahs_wrap}>
         {saved?.map((el) => {
           return (
-            <div className={clsx(cn.ayahs, cn.Surah)} key={el.number}>
+            <div className={clsx(cn.ayahs, cn.Surah)} key={uuidv4()}>
               <div className={cn.controls}>
                 <span className={cn.ayah_num}>{el.number}</span>
                 <button
@@ -44,6 +45,7 @@ const Saved = () => {
                         }
                       });
                     });
+                    console.log(saved);
                     localStorage.setItem("savedAyahs", JSON.stringify(saved));
                   }}
                 >
