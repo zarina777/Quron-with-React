@@ -15,7 +15,12 @@ function ProvideContext({ children }) {
   );
   const [audio, setAudio] = useState(null);
   const [close, setClose] = useState(true);
-  const [saved, setSaved] = useState([]);
+  const [saved, setSaved] = useState(
+    JSON.parse(localStorage.getItem("savedAyahs"))
+      ? JSON.parse(localStorage.getItem("savedAyahs"))
+      : []
+  );
+  console.log(saved);
   const audioRef = useRef();
   return (
     <Context.Provider

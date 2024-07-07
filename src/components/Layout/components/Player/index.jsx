@@ -1,12 +1,10 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { Context } from "../../../../context";
 import cn from "./style.module.scss";
 
 const Player = () => {
   const { audio, audioRef, close, setClose } = useContext(Context);
-  useEffect(() => {
-    audioRef.current.play();
-  }, []);
+
   return (
     <div
       style={close ? { bottom: "-100%" } : { bottom: "0" }}
@@ -19,7 +17,7 @@ const Player = () => {
         </div>
         <span>{audio?.number}</span>
       </div>
-      <audio controls src={audio?.audio} ref={audioRef}></audio>
+      <audio autoPlay controls src={audio?.audio} ref={audioRef}></audio>
       <button>
         <i
           onClick={() => {

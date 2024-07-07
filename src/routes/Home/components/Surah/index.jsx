@@ -7,7 +7,8 @@ import { Context } from "../../../../context";
 import cn from "./style.module.scss";
 
 const Surah = () => {
-  const { theSurah, setAudio, audioRef, setClose } = useContext(Context);
+  const { theSurah, setAudio, audioRef, setClose, saved, setSaved } =
+    useContext(Context);
 
   const [info, setInfo] = useState(null);
   const [translation, setTranslation] = useState(null);
@@ -78,8 +79,52 @@ const Surah = () => {
                   >
                     <i className="fa-solid fa-play"></i>
                   </button>
-                  <button>
-                    <i className="fa-regular fa-bookmark"></i>
+                  <button
+                    onClick={() => {
+                      if (
+                        !saved.filter((el) => {
+                          return el.number == `${theSurah + ":" + (index + 1)}`;
+                        }).length
+                      ) {
+                        setSaved((prev) => [
+                          ...prev,
+                          {
+                            text: el.text,
+                            translation: translation.ayahs[index]?.text,
+                            audio: audioAyah[index].audio,
+                            name: info.englishName,
+                            arabicName: translation.name,
+                            number: `${theSurah + ":" + (index + 1)}`,
+                          },
+                        ]);
+                        localStorage.setItem(
+                          "savedAyahs",
+                          JSON.stringify(saved)
+                        );
+                      } else {
+                        setSaved((prev) => {
+                          return prev.filter((el) => {
+                            if (
+                              el.number !== `${theSurah + ":" + (index + 1)}`
+                            ) {
+                              return el;
+                            }
+                          });
+                        });
+                        localStorage.setItem(
+                          "savedAyahs",
+                          JSON.stringify(saved)
+                        );
+                      }
+                    }}
+                  >
+                    {saved.filter((el) => {
+                      return el.number == `${theSurah + ":" + (index + 1)}`;
+                    }).length ? (
+                      <i className="fa-solid fa-bookmark"></i>
+                    ) : (
+                      <i className="fa-regular fa-bookmark"></i>
+                    )}
                   </button>
                 </div>
                 <div className={cn.text_wrapper}>

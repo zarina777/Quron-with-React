@@ -43,6 +43,7 @@
   }
   audio {
     width: 100%;
+    flex: 1;
     &::-webkit-media-controls-panel {
       border: none;
       background-color: rgb(208, 238, 255);
