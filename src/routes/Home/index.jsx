@@ -46,9 +46,7 @@ const Home = () => {
             placeholder="Search by Surah Name"
             type="text"
           />
-          <Button>
-            <i className="fa-solid fa-magnifying-glass"></i>
-          </Button>
+          <i className="fa-solid fa-magnifying-glass"></i>
         </div>
         {surahs && (
           <SideSurahs data={searchedSurahs == "" ? surahs : searchedSurahs} />

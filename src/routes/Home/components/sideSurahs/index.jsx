@@ -7,7 +7,7 @@ import cn from "./style.module.scss";
 const SideSurahs = ({ data }) => {
   let { setTheSurah, theSurah, mode } = useContext(Context);
   return (
-    <ul className={clsx(cn.surahs)}>
+    <ul className={clsx(cn.surahs, mode == "night" ? cn.night : "")}>
       {data?.map((el) => {
         return (
           <li

@@ -4,8 +4,8 @@
   align-items: center;
   gap: 20px;
   height: calc(88vh - 20px);
-
   overflow-y: scroll;
+  scrollbar-color: rgba(141, 141, 141, 0.395) transparent;
   h2 {
     text-align: center;
   }
@@ -15,6 +15,9 @@
     gap: 10px;
     @media (max-width: 1200px) {
       grid-template-columns: 1fr;
+    }
+    .exact {
+      border: 3px solid rgb(255, 255, 4);
     }
     .Surah {
       padding: 20px;
@@ -59,6 +62,8 @@
         flex-direction: column;
         justify-content: space-between;
         padding: 10px 0;
+        gap: 20px;
+
         .text_arabic {
           align-self: flex-end;
           text-align: end;

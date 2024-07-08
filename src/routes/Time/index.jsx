@@ -51,6 +51,8 @@ const Time = () => {
       upcomingTime = upcomingTimes.reduce((min, el) =>
         el[1] < min[1] ? el : min
       );
+    } else {
+      upcomingTime = times[0];
     }
   }
 

@@ -14,6 +14,7 @@ function ProvideContext({ children }) {
     localStorage.getItem("mode") ? localStorage.getItem("mode") : "day"
   );
   const [audio, setAudio] = useState(null);
+  const [listOfAudio, setListOfAudio] = useState([]);
   const [close, setClose] = useState(true);
   const [saved, setSaved] = useState(
     JSON.parse(localStorage.getItem("savedAyahs"))
@@ -21,6 +22,11 @@ function ProvideContext({ children }) {
       : []
   );
   const audioRef = useRef();
+  let [Index, setIndex] = useState(
+    listOfAudio.findIndex((el) => {
+      return el.audio == audioRef.current.src;
+    })
+  );
   return (
     <Context.Provider
       value={{
@@ -35,6 +41,10 @@ function ProvideContext({ children }) {
         setClose,
         saved,
         setSaved,
+        listOfAudio,
+        setListOfAudio,
+        Index,
+        setIndex,
       }}
     >
       {children}
