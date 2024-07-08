@@ -6,11 +6,17 @@
   justify-content: center;
   align-items: center;
   border-radius: 10px;
-  background-color: rgba(226, 240, 255, 0.735);
   font-size: 17px;
-  color: rgb(12, 67, 104);
   cursor: pointer;
   &:hover {
     background-color: rgba(201, 215, 230, 0.806);
   }
+}
+.night {
+  background-color: rgba(226, 240, 255, 0.5);
+  color: rgb(12, 67, 104);
+}
+.day {
+  background-color: rgba(226, 240, 255, 0.735);
+  color: rgb(12, 67, 104);
 }

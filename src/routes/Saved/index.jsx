@@ -13,14 +13,21 @@ import cn from "./style.module.scss";
 //   number: `${theSurah + ":" + (index + 1)}`,
 // }
 const Saved = () => {
-  const { saved, setSaved, setClose, setAudio } = useContext(Context);
+  const { saved, setSaved, setClose, setAudio, mode } = useContext(Context);
   return (
     <div className={cn.SavedSurahs}>
       <h2>Saved Ayahs</h2>
       <div className={cn.savedAyahs_wrap}>
         {saved?.map((el) => {
           return (
-            <div className={clsx(cn.ayahs, cn.Surah)} key={uuidv4()}>
+            <div
+              className={clsx(
+                cn.ayahs,
+                cn.Surah,
+                mode == "night" ? cn.night : ""
+              )}
+              key={uuidv4()}
+            >
               <div className={cn.controls}>
                 <span className={cn.ayah_num}>{el.number}</span>
                 <button

@@ -1,12 +1,13 @@
+import clsx from "clsx";
 import { memo } from "react";
 import { useContext } from "react";
 import { Context } from "../../../../context";
 import cn from "./style.module.scss";
 
 const SideSurahs = ({ data }) => {
-  let { setTheSurah, theSurah } = useContext(Context);
+  let { setTheSurah, theSurah, mode } = useContext(Context);
   return (
-    <ul className={cn.surahs}>
+    <ul className={clsx(cn.surahs)}>
       {data?.map((el) => {
         return (
           <li

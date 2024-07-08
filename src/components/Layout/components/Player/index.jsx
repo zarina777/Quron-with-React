@@ -1,14 +1,15 @@
+import clsx from "clsx";
 import { useContext } from "react";
 import { Context } from "../../../../context";
 import cn from "./style.module.scss";
 
 const Player = () => {
-  const { audio, audioRef, close, setClose } = useContext(Context);
+  const { audio, audioRef, close, setClose, mode } = useContext(Context);
 
   return (
     <div
       style={close ? { bottom: "-100%" } : { bottom: "0" }}
-      className={cn.Player}
+      className={clsx(cn.Player, mode == "night" ? cn.night : cn.day)}
     >
       <div className={cn.info}>
         <div className={cn.name}>

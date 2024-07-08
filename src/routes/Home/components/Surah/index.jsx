@@ -8,8 +8,8 @@ import { Context } from "../../../../context";
 import cn from "./style.module.scss";
 import { memo } from "react";
 
-const Surah = () => {
-  const { theSurah, setAudio, audioRef, setClose, saved, setSaved } =
+const Surah = ({ className }) => {
+  const { theSurah, setAudio, audioRef, setClose, saved, setSaved, mode } =
     useContext(Context);
 
   const [info, setInfo] = useState(null);
@@ -46,8 +46,8 @@ const Surah = () => {
     }
   }, [theSurah]);
   return (
-    <div className={cn.container}>
-      <div className={cn.surah}>
+    <div className={clsx(cn.container)}>
+      <div className={clsx(cn.surah)}>
         {loader && (
           <div className={cn.loader_wrap}>
             <div className={cn.loader}></div>
@@ -55,7 +55,13 @@ const Surah = () => {
         )}
         {info && translation && (
           <>
-            <div className={clsx(cn.heading, cn.Surah)}>
+            <div
+              className={clsx(
+                cn.heading,
+                cn.Surah,
+                mode == "night" ? cn.night : ""
+              )}
+            >
               <h3>{info.englishName}</h3>
               <span>
                 Ayah - {info.ayahs.length} , {info.revelationType}
@@ -63,7 +69,14 @@ const Surah = () => {
             </div>
             {info.ayahs.map((el, index) => {
               return (
-                <div className={clsx(cn.ayahs, cn.Surah)} key={uuidv4()}>
+                <div
+                  className={clsx(
+                    cn.ayahs,
+                    cn.Surah,
+                    mode == "night" ? cn.night : ""
+                  )}
+                  key={uuidv4()}
+                >
                   <div className={cn.controls}>
                     <span className={cn.ayah_num}>
                       {theSurah + ":" + (index + 1)}

@@ -1,7 +1,7 @@
 let districts = [
   "Oltiariq",
   "Bishkek",
-  "Os'mat",
+  "O'smat",
   "To'rtko'l",
   "Uzunquduq",
   "Jizzax",

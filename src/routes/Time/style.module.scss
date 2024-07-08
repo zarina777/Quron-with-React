@@ -1,0 +1,94 @@
+.namazTime {
+  height: calc(88vh - 20px);
+  display: flex;
+  flex-direction: column;
+  margin-top: 5%;
+  align-items: center;
+  gap: 30px;
+  label {
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px;
+    padding: 25px;
+    gap: 10px;
+    p {
+      color: #0091ad;
+    }
+    select {
+      width: 100%;
+      background-color: rgb(255, 255, 255);
+      border: 1px solid #0091ad;
+      padding: 5px;
+      border-radius: 5px;
+      box-shadow: 0 0 3px #0091ad;
+      outline: none;
+    }
+  }
+  .times_wrap {
+    max-width: 800px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    li {
+      box-shadow: 1px 1px 3px #005465a1;
+      padding: 10px;
+      display: flex;
+      border-radius: 15px;
+      gap: 5%;
+    }
+    .times_li {
+      background-color: rgba(255, 255, 255, 0.701);
+      .name_time {
+        color: #002184da;
+      }
+      span {
+        color: #03164d;
+      }
+    }
+    .upcoming {
+      background-color: rgba(255, 255, 255);
+      border: 2px solid yellow;
+      .name_time {
+        color: #020a24;
+      }
+      span {
+        color: red;
+      }
+    }
+  }
+  .loader_wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.454);
+    top: 0;
+    left: 0;
+    z-index: 100;
+    .loader {
+      --d: 40px;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      color: #03164d;
+      box-shadow: calc(1 * var(--d)) calc(0 * var(--d)) 0 0,
+        calc(0.707 * var(--d)) calc(0.707 * var(--d)) 0 1px,
+        calc(0 * var(--d)) calc(1 * var(--d)) 0 2px,
+        calc(-0.707 * var(--d)) calc(0.707 * var(--d)) 0 3px,
+        calc(-1 * var(--d)) calc(0 * var(--d)) 0 4px,
+        calc(-0.707 * var(--d)) calc(-0.707 * var(--d)) 0 5px,
+        calc(0 * var(--d)) calc(-1 * var(--d)) 0 6px;
+      animation: l27 1s infinite steps(8);
+    }
+    @keyframes l27 {
+      100% {
+        transform: rotate(1turn);
+      }
+    }
+  }
+}

@@ -13,6 +13,7 @@ import cn from "./style.module.scss";
 const Home = () => {
   let [surahs, setSurahs] = useState(null);
   let [searchedSurahs, setSearchedSurahs] = useState("");
+  let { mode } = useContext(Context);
   useEffect(() => {
     api.get().then((data) => {
       setSurahs(data.data.data);
@@ -38,7 +39,7 @@ const Home = () => {
   return (
     <div className={cn.Home}>
       {/* Left Side */}
-      <div className={clsx(cn.sidebar)}>
+      <div className={clsx(cn.sidebar, mode == "night" ? cn.night : "")}>
         <div className={cn.search}>
           <input
             onInput={searchSurah}

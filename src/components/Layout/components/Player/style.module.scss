@@ -3,11 +3,11 @@
   position: fixed;
   left: 0;
   width: 100%;
-  background-color: rgb(208, 238, 255);
   display: flex;
   align-items: center;
   padding: 0 10px;
-  transition: all 0.5s;
+  transition: top 0.5s;
+
   .info {
     display: flex;
     align-items: center;
@@ -46,11 +46,32 @@
     flex: 1;
     &::-webkit-media-controls-panel {
       border: none;
-      background-color: rgb(208, 238, 255);
     }
     &::-webkit-media-controls-play-button {
       background-color: rgb(101, 182, 230);
       border-radius: 50%;
     }
+  }
+}
+.day {
+  background-color: rgb(208, 238, 255);
+  audio {
+    &::-webkit-media-controls-panel {
+      background-color: rgb(208, 238, 255);
+    }
+  }
+}
+.night {
+  background-color: rgb(146, 214, 253);
+  audio {
+    &::-webkit-media-controls-panel {
+      background-color: rgb(146, 214, 253);
+    }
+  }
+  h4 {
+    color: black;
+  }
+  span {
+    color: black;
   }
 }

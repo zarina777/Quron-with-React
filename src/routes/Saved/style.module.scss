@@ -12,8 +12,10 @@
   .savedAyahs_wrap {
     display: grid;
     grid-template-columns: 1fr 1fr;
-
     gap: 10px;
+    @media (max-width: 1200px) {
+      grid-template-columns: 1fr;
+    }
     .Surah {
       padding: 20px;
       width: 100%;
@@ -66,6 +68,12 @@
           font-size: 12px;
           color: #03334de7;
         }
+      }
+    }
+    .night {
+      background-color: rgb(4, 43, 88) !important;
+      .text_tranlation {
+        color: #fff !important;
       }
     }
   }

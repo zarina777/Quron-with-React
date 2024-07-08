@@ -2,6 +2,7 @@
   display: flex;
   height: 100%;
   gap: 20px;
+
   .sidebar {
     background-color: #fff;
     margin-bottom: 20px;
@@ -24,7 +25,14 @@
       input {
         padding: 10px 0 10px 10px;
         flex: 1;
+        background-color: transparent;
       }
+    }
+  }
+  .night {
+    background-color: rgb(4, 43, 88);
+    .search {
+      background-color: rgb(213, 231, 255);
     }
   }
 }
