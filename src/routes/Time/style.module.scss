@@ -32,6 +32,10 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 20px;
+    @media (max-width: 900px) {
+      grid-template-columns: 1fr;
+      max-width: 600px;
+    }
     li {
       box-shadow: 1px 1px 3px #005465a1;
       padding: 10px;

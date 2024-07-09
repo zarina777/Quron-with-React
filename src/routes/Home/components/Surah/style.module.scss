@@ -1,6 +1,27 @@
 .container {
   position: relative;
   flex: 1;
+  .bar {
+    position: absolute;
+    top: -12px;
+    left: -12px;
+    background-color: rgba(111, 197, 248, 0.797);
+    width: 35px;
+    aspect-ratio: 1/1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: hover 0.8s;
+    display: none;
+    @media (max-width: 950px) {
+      display: flex;
+    }
+    &:hover {
+      background-color: rgba(84, 212, 255, 0.457);
+    }
+  }
   .surah {
     height: calc(88vh - 20px);
     overflow-y: scroll;

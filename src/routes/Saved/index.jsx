@@ -2,6 +2,8 @@ import clsx from "clsx";
 import { useContext } from "react";
 import { Context } from "../../context";
 import { v4 as uuidv4 } from "uuid";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import cn from "./style.module.scss";
 
 const Saved = () => {
@@ -39,6 +41,7 @@ const Saved = () => {
 
   return (
     <div className={cn.SavedSurahs}>
+      <ToastContainer />
       <h2>Saved Ayahs</h2>
       <div className={cn.savedAyahs_wrap}>
         {saved?.map((el) => (
@@ -66,6 +69,7 @@ const Saved = () => {
                     return prev.filter((prevEl) => prevEl.number !== el.number);
                   });
                   localStorage.setItem("savedAyahs", JSON.stringify(saved));
+                  toast.error("Bookmark is deleted");
                 }}
               >
                 <i className="fa-solid fa-bookmark"></i>

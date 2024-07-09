@@ -1,7 +1,6 @@
 .Button {
   width: 45px;
-  height: 45px;
-  // border: 1px solid rgba(12, 69, 107, 0.244);
+  aspect-ratio: 1/1;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -10,6 +9,9 @@
   cursor: pointer;
   &:hover {
     background-color: rgba(201, 215, 230, 0.806);
+  }
+  @media (max-width: 1000px) {
+    width: 40px;
   }
 }
 .night {

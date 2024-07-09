@@ -5,7 +5,7 @@ import { Context } from "../../../../context";
 import cn from "./style.module.scss";
 
 const SideSurahs = ({ data }) => {
-  let { setTheSurah, theSurah, mode } = useContext(Context);
+  let { setTheSurah, theSurah, mode, openBar } = useContext(Context);
   return (
     <ul className={clsx(cn.surahs, mode == "night" ? cn.night : "")}>
       {data?.map((el) => {
@@ -15,6 +15,7 @@ const SideSurahs = ({ data }) => {
             onClick={() => {
               setTheSurah(el.number);
               localStorage.setItem("surahNumber", JSON.stringify(el.number));
+              openBar(false);
             }}
             key={el.number}
           >

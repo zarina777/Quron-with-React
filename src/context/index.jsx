@@ -16,6 +16,7 @@ function ProvideContext({ children }) {
   const [audio, setAudio] = useState(null);
   const [listOfAudio, setListOfAudio] = useState([]);
   const [close, setClose] = useState(true);
+  const [bar, openBar] = useState(false);
   const [saved, setSaved] = useState(
     JSON.parse(localStorage.getItem("savedAyahs"))
       ? JSON.parse(localStorage.getItem("savedAyahs"))
@@ -45,6 +46,8 @@ function ProvideContext({ children }) {
         setListOfAudio,
         Index,
         setIndex,
+        bar,
+        openBar,
       }}
     >
       {children}

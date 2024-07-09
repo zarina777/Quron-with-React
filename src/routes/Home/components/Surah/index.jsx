@@ -1,10 +1,11 @@
 import clsx from "clsx";
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect, useContext, memo } from "react";
 import api from "../../../../api";
 import { v4 as uuidv4 } from "uuid";
 import { Context } from "../../../../context";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import cn from "./style.module.scss";
-import { memo } from "react";
 
 const Surah = () => {
   const {
@@ -19,6 +20,7 @@ const Surah = () => {
     setListOfAudio,
     listOfAudio,
     setIndex,
+    openBar,
   } = useContext(Context);
 
   const [info, setInfo] = useState(null);
@@ -91,6 +93,15 @@ const Surah = () => {
 
   return (
     <div className={clsx(cn.container)}>
+      <span
+        onClick={() => {
+          openBar((prev) => !prev);
+        }}
+        className={cn.bar}
+      >
+        <i className="fa-solid fa-bars-staggered"></i>
+      </span>
+      <ToastContainer />
       <div className={clsx(cn.surah)}>
         {loader && (
           <div className={cn.loader_wrap}>
@@ -165,6 +176,7 @@ const Surah = () => {
                             },
                             ...prev,
                           ]);
+                          toast.success("Bookmark is saved");
                         } else {
                           setSaved((prev) =>
                             prev.filter(
@@ -172,6 +184,7 @@ const Surah = () => {
                                 savedEl.number !== `${theSurah}:${index + 1}`
                             )
                           );
+                          toast.error("Bookmark is deleted");
                         }
                         localStorage.setItem(
                           "savedAyahs",
